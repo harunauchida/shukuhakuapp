@@ -1,0 +1,30 @@
+<!-- app/views/shared/_header.html.erb --> 
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <%= link_to "ホーム", root_path, class: "navbar-brand" %>
+
+    <% if user_signed_in? %>
+      <div class="dropdown ms-auto">
+        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <%= current_user.name %>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+          <li><%= link_to "プロフィール", user_path(current_user), class: "dropdown-item" %></li>
+          <li><%= link_to "プロフィール編集", edit_user_path(current_user), class: "dropdown-item" %></li>
+          
+
+          <!-- Turbo対応のリンクでログアウト -->
+          <li>
+            <%= link_to "ログアウト",
+                  destroy_user_session_path,
+                  class: "dropdown-item",
+                  data: { turbo_method: :delete, turbo_confirm: "ログアウトしますか？" } %>
+          </li>
+        </ul>
+      </div>
+    <% else %>
+      <%= link_to "ログイン", login_path, class: "nav-link" %>
+      <%= link_to "新規登録", signup_path, class: "nav-link ms-2" %>
+    <% end %>
+  </div>
+</nav>

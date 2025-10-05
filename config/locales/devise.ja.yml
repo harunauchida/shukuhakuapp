@@ -1,0 +1,18 @@
+ja:
+  devise:
+    sessions:
+      new:
+        sign_in: "ログイン"
+        email: "メールアドレス"
+        password: "パスワード"
+        remember_me: "ログイン状態を保持"
+        submit: "ログイン"
+        forgot_your_password: "パスワードをお忘れですか？"
+    passwords:
+      new:
+        submit: "パスワード再設定メール送信"
+    registrations:
+      new:
+        sign_up: "新規登録"
+      edit:
+        edit: "アカウント編集"

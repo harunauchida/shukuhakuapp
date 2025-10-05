@@ -1,0 +1,31 @@
+<h2>予約確認</h2>
+
+<!-- 成功・エラーのメッセージ表示 -->
+<% if notice %>
+  <div class="alert alert-success">
+    <%= notice %>
+  </div>
+<% end %>
+
+<% if alert %>
+  <div class="alert alert-danger">
+    <%= alert %>
+  </div>
+<% end %>
+
+<p>施設名: <%= @room.name %></p>
+<p>住所: <%= @room.address %></p>
+<p>チェックイン: <%= @reservation.check_in %></p>
+<p>チェックアウト: <%= @reservation.check_out %></p>
+<p>宿泊日数: <%= @nights %>泊</p>
+<p>人数: <%= @reservation.number_of_people %>名</p>
+<p>合計金額: ¥<%= @total_price %></p>
+
+<%= form_with model: [@room, @reservation], local: true do |f| %>
+  <%= f.hidden_field :check_in %>
+  <%= f.hidden_field :check_out %>
+  <%= f.hidden_field :number_of_people %>
+  <%= f.submit "予約を確定する", class: "btn btn-success mt-3" %>
+<% end %>
+
+<%= link_to "戻る", new_room_reservation_path(@room), class: "btn btn-secondary mt-3" %>
