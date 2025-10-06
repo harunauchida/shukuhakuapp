@@ -1,0 +1,35 @@
+<h1>施設編集</h1>
+
+<%= form_with model: @room, local: true do |f| %>
+  <div>
+    <%= f.label :name, "施設名" %><br>
+    <%= f.text_field :name %>
+  </div>
+
+  <div>
+    <%= f.label :detail, "施設詳細" %><br>
+    <%= f.text_area :detail %>
+  </div>
+
+  <div>
+    <%= f.label :price, "料金" %><br>
+    <%= f.number_field :price %>
+  </div>
+
+  <div>
+    <%= f.label :address, "住所" %><br>
+    <%= f.text_field :address %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :image, "施設画像（任意）" %>
+    <%= f.file_field :image, class: "form-control" %>
+    <% if @room.image.attached? %>
+      <p>現在の画像：</p>
+      <%= image_tag @room.image, class: "img-fluid rounded mb-3", style: "max-width: 200px;" %>
+    <% end %>
+  </div>
+
+  <%= f.submit "更新", class: "btn btn-success" %>
+  <%= link_to "キャンセル", room_path(@room), class: "btn btn-secondary ms-2" %>
+<% end %>

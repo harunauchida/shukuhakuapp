@@ -1,0 +1,19 @@
+<h1>検索結果</h1>
+
+<p>合計件数: <%= @rooms.count %> 件</p>
+
+<% if @rooms.any? %>
+  <div class="rooms-container">
+    <% @rooms.each do |room| %>
+      <div class="room-card">
+        <h2><%= room.name %></h2>
+        <p><strong>住所:</strong> <%= room.address %></p>
+        <p><strong>詳細:</strong> <%= room.detail %></p>
+        <p><strong>宿泊料金:</strong> ¥<%= room.price %> / 日</p>
+        <%= link_to "詳細を見る", room_path(room), class: "btn-detail" %>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <p>条件に一致する施設はありません。</p>
+<% end %>

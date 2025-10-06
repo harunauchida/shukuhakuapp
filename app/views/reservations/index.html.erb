@@ -1,0 +1,52 @@
+<h2>予約一覧</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>施設画像</th>
+      <th>施設名</th>
+      <th>紹介文</th>
+      <th>チェックイン</th>
+      <th>チェックアウト</th>
+      <th>人数</th>
+      <th>合計金額</th>
+      <th>予約確定日時</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @reservations.each do |r| %>
+      <% nights = (r.check_out - r.check_in).to_i %>
+      <tr>
+        <!-- 施設画像 -->
+        <td>
+          <% if r.room.image.attached? %>
+            <%= image_tag r.room.image, width: 100, height: 100, alt: r.room.name, style: "object-fit: cover;" %>
+          <% else %>
+            <%= image_tag "default_room.png", width: 100, height: 100, alt: "デフォルト画像", style: "object-fit: cover;" %>
+          <% end %>
+        </td>
+
+        <!-- 施設名 -->
+        <td><%= r.room.name %></td>
+
+        <!-- 紹介文 -->
+        <td><%= truncate(r.room.detail, length: 50) %></td>
+
+        <!-- チェックイン -->
+        <td><%= r.check_in.strftime("%Y年%m月%d日") %></td>
+
+        <!-- チェックアウト -->
+        <td><%= r.check_out.strftime("%Y年%m月%d日") %></td>
+
+        <!-- 人数 -->
+        <td><%= r.number_of_people %>名</td>
+
+        <!-- 合計金額 -->
+        <td>¥<%= r.total_price || (r.room.price * nights * r.number_of_people) %></td>
+
+        <!-- 予約確定日時 -->
+        <td><%= r.created_at.strftime("%Y年%m月%d日 %H:%M") %></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>

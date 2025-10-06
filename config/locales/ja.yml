@@ -1,0 +1,35 @@
+ja:  
+  activerecord:
+    models:
+      user: "ユーザー"
+      room: "施設"
+      reservation: "予約"
+    attributes:
+      user:
+        email: "メールアドレス"
+        password: "パスワード"
+        name: "名前"
+        password_confirmation: "パスワード（確認用）"
+      room:
+        name: "施設名"
+        address: "住所"
+        price: "宿泊料金"
+        detail: "詳細"
+      reservation:
+        check_in: "チェックイン日"
+        check_out: "チェックアウト日"
+        number_of_people: "人数"
+
+  devise:
+    sessions:
+      signed_in: "ログインしました"
+      signed_out: "ログアウトしました"
+
+  errors:
+    messages:
+      not_saved: "保存できませんでした: %{count} 件のエラーがあります"
+      blank: "を入力してください"
+      invalid: "は不正な値です"
+      too_short: "は短すぎます"
+      greater_than_or_equal_to: "は%{count}以上にしてください"
+      less_than: "は%{count}より前の日付にしてください"

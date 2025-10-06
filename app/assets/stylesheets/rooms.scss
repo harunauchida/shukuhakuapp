@@ -1,0 +1,40 @@
+// Place all the styles related to the Rooms controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.rooms-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.room-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 16px;
+  width: 300px;
+  background-color: #f9f9f9;
+}
+
+.room-card h2 {
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+}
+
+.room-card p {
+  margin: 4px 0;
+}
+
+.btn-detail {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 6px 12px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+.btn-detail:hover {
+  background-color: #0056b3;
+}

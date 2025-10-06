@@ -1,0 +1,26 @@
+<h1>施設登録済一覧</h1>
+
+<% @rooms.each do |room| %>
+  <div class="card mb-3 p-3 shadow-sm">
+    <!-- 施設画像 -->
+    <% if room.image.present? %>
+      <%= image_tag room.image, class: "card-img-top mb-2 rounded", style: "height:200px; object-fit:cover;" %>
+    <% else %>
+      <%= image_tag "default_room.png", class: "card-img-top mb-2 rounded", style: "height:200px; object-fit:cover;" %>
+    <% end %>
+
+    <h3><%= link_to room.name, room_path(room), class: "text-decoration-none text-dark" %></h3>
+
+    <p class="text-muted"><%= room.detail.truncate(100) %></p>
+
+    <p>料金: <%= number_to_currency(room.price, unit: "¥") %> / 日</p>
+
+    <!-- 作成日 -->
+    <p class="text-secondary" style="font-size:0.9rem;">登録日: <%= room.created_at.strftime("%Y/%m/%d %H:%M") %></p>
+
+    <div class="mt-2">
+      <%= link_to "編集", edit_room_path(room), class: "btn btn-primary btn-sm me-2" %>
+      <%= button_to "削除", room_path(room), method: :delete, class: "btn btn-danger btn-sm d-inline" %>
+    </div>
+  </div>
+<% end %>

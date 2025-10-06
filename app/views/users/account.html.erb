@@ -1,0 +1,9 @@
+<h1>アカウント情報</h1>
+
+<p>メールアドレス: <%= @user.email %></p>
+<p>パスワード: ********</p>
+
+<%= link_to "アカウント情報を編集", edit_user_account_path, class: "btn btn-primary" %>
+
+<!-- プロフィールページへのリンク -->
+<%= link_to "プロフィールを見る", user_path(@user), class: "btn btn-primary" %>
