@@ -10,7 +10,6 @@
       <th>人数</th>
       <th>合計金額</th>
       <th>予約確定日時</th>
-      <th>操作</th>
     </tr>
   </thead>
   <tbody>
@@ -47,10 +46,6 @@
         <!-- 予約確定日時 -->
         <td><%= r.created_at.strftime("%Y年%m月%d日 %H:%M") %></td>
 
-        <!-- 詳細ボタン -->
-        <td>
-          <%= link_to "詳細", room_path(r.room), class: "btn btn-info btn-sm" %>
-        </td>
       </tr>
     <% end %>
   </tbody>
