@@ -2,18 +2,7 @@
 <p>住所: <%= @room.address %></p>
 <p>宿泊料金: ¥<%= @room.price %> / 日</p>
 
-<!-- 成功・エラーのメッセージ表示 -->
-<% if notice %>
-  <div class="alert alert-success">
-    <%= notice %>
-  </div>
-<% end %>
 
-<% if flash[:alert] %>
-  <div class="alert alert-danger">
-    <%= flash[:alert] %>
-  </div>
-<% end %>
 
 <%= form_with model: [@room, @reservation], url: confirm_room_reservations_path(@room), local: true do |f| %>
   <div class="mb-3">

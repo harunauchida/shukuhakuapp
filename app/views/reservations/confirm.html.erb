@@ -1,18 +1,5 @@
 <h2>予約確認</h2>
 
-<!-- 成功・エラーのメッセージ表示 -->
-<% if notice %>
-  <div class="alert alert-success">
-    <%= notice %>
-  </div>
-<% end %>
-
-<% if alert %>
-  <div class="alert alert-danger">
-    <%= alert %>
-  </div>
-<% end %>
-
 <p>施設名: <%= @room.name %></p>
 <p>住所: <%= @room.address %></p>
 <p>チェックイン: <%= @reservation.check_in %></p>

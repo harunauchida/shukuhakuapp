@@ -1,12 +1,4 @@
 <h1>アカウント情報</h1>
-<% if notice %>
-  <div class="alert alert-success"><%= notice %></div>
-<% end %>
-
-<% if flash[:alert] %>
-  <div class="alert alert-danger"><%= flash[:alert] %></div>
-<% end %>
-
 
 <p>メールアドレス: <%= @user.email %></p>
 <p>パスワード: ********</p>
