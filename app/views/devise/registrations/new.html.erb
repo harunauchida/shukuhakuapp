@@ -1,13 +1,12 @@
 <h2>新規登録</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { multipart: true }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-
   <div class="field">
-  <%= f.label :name, "名前" %><br />
-  <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
-</div>
+    <%= f.label :name, "名前" %><br />
+    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+  </div>
 
   <div class="field">
     <%= f.label :email %><br />
@@ -17,7 +16,7 @@
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
@@ -25,6 +24,12 @@
   <div class="field">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+
+  <!-- ここからアイコン画像アップロード -->
+  <div class="field">
+    <%= f.label :icon, "アイコン画像" %><br />
+    <%= f.file_field :icon %>
   </div>
 
   <div class="actions">

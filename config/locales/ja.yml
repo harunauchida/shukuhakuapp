@@ -27,6 +27,7 @@ ja:
 
   errors:
     messages:
+      not_saved: "保存できませんでした: %{count} 件のエラーがあります"
       blank: "を入力してください"
       invalid: "は不正な値です"
       too_short: "は短すぎます"

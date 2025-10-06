@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+<!DOCTYPE html>  
+
 <html>
   <head>
     <title>宿泊予約アプリ</title>
@@ -25,7 +26,13 @@
           <% if user_signed_in? %>
             <div class="dropdown">
               <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <%= current_user.icon.present? ? image_tag(current_user.icon, width: 30, height: 30, class: "rounded-circle me-2") : "👤" %>
+                <%# アイコン表示: 登録画像があればそれを表示、なければデフォルト画像 %>
+                <%= image_tag(
+                      current_user.icon.attached? ? current_user.icon : "default_icon.png",
+                      width: 30,
+                      height: 30,
+                      class: "rounded-circle me-2"
+                    ) %>
                 <span><%= current_user.name %></span>
               </a>
               <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
@@ -33,7 +40,9 @@
                 <li><%= link_to "登録済一覧", rooms_path, class: "dropdown-item" %></li>
                 <li><%= link_to "予約一覧", reservations_path, class: "dropdown-item" %></li>
                 <li><%= link_to "アカウント情報", user_account_path, class: "dropdown-item" %></li>
-                <li><%= button_to "ログアウト", destroy_user_session_path, method: :delete, class: "dropdown-item" %></li>
+                <li>
+                  <%= button_to "ログアウト", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+                </li>
               </ul>
             </div>
           <% else %>
@@ -46,6 +55,16 @@
         </div>
       </nav>
     </header>
+
+    <!-- フラッシュメッセージ表示 -->
+    <div class="container mt-3">
+      <% flash.each do |key, message| %>
+        <div class="alert alert-<%= key == 'notice' ? 'success' : 'danger' %> alert-dismissible fade show" role="alert">
+          <%= message %>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      <% end %>
+    </div>
 
     <main class="container mt-4">
       <%= yield %>
